@@ -1,0 +1,14 @@
+name: Test funcs parsing
+
+on: [push]
+
+jobs:
+  test_funcs_parsing:
+    runs-on: ubuntu-latest
+    name: A job to test funcs parsing
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: funcs parse
+      run: python3 parse_funcs.py test/func_samples/
+      shell: bash
