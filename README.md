@@ -28,13 +28,15 @@ more languages' examples you can find [here](https://github.com/gitx-io/ActionSe
 
 ## Languages supported
 
-* **Python** (support `requirements.txt` to install deps)
-* **Ruby** (support `Gemfile` to install deps)
-* **Node.js** (support `package.json` to install deps)
-* **Perl** (support `cpanfile` to install deps )
-* **Golang** (no deps supported yet)
-* **Haskell** (no deps supported yet)
-* **Elixir** (no deps supported yet)
+| Language  | Dependency Installation |
+| ------------- | ------------- |
+| Python | ✅ `requirements.txt` |
+| Ruby | ✅ `Gemfile` |
+| Node.js | ✅ `package.json` |
+| Perl | ✅ `cpanfile` |
+| Golang | ⬜️ not supported yet |
+| Haskell | ⬜️ not supported yet |
+| Elixir | ⬜️ not supported yet |
 
 ## HTTP(s) Headers
 
@@ -57,4 +59,13 @@ https://gitx.io/j/gitx-io/ActionServerless/master/README.md
 ```
 
 just use `gitx.io/j/` to replace the `raw.githubusercontent.com/` segment.
+
+
+## Contributions
+
+Contributions are welcome! You may check the following features in case you'd like to contribute but no idea what to do:
+
+* Support to add your favorite languages
+* Support dependency installation to the existing languages
+* Use this action to create an application and share it
 
