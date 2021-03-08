@@ -1,5 +1,5 @@
 name: 'ActionServerless'
-description: Use GitHub Actions to serve a serverless service
+description: Use GitHub Actions to create a serverless service
 inputs:
   filepath:  # id of input
     description: 'A file path where to read source code'
@@ -11,5 +11,5 @@ runs:
       run: python3 ${{ github.action_path }}/run_funcs.py ${{ inputs.filepath }}
       shell: bash
 branding:
-  icon: 'cloud'
+  icon: 'cloud-lightning'
   color: 'purple'
