@@ -1,11 +1,11 @@
-name: Test run funcions to generate and serve
+name: Test run funcs
 
 on: [push]
 
 jobs:
   test_ruby_func:
     runs-on: ubuntu-latest
-    name: A job to test run funcs
+    name: A job to test run functions
     steps:
     - name: Checkout
       uses: actions/checkout@v2

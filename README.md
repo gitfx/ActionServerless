@@ -1,4 +1,6 @@
-# ActionServerless - Use GitHub Actions to serve a serverless service
+# ActionServerless - Use GitHub Actions to create a serverless service
+
+[![ActionServerless Testing](https://github.com/gitx-io/ActionServerless/workflows/Test%20run%20funcs/badge.svg)](https://github.com/gitx-io/ActionServerless/blob/master/.github/workflows/test_run_funcs.yml)
 
 ActionServerless is an action to do some computing and then generate a string/JSON file to a path, you can visit the file as a service when in dev/testing, or in your production. We may take it as a GitHub Actions powered `serverless` service.
 
@@ -9,7 +11,7 @@ In fact you can do all of these in native GitHub actions. ActionServerless just 
 
 ## Quick start
 
-At first use [the template we give](https://github.com/gitx-io/ActionServerless-template/generate) to create a repository. Then We start with a Python example:
+At first [use the template](https://github.com/gitx-io/ActionServerless-template/generate) to create a repository. Then We start with a Python example:
 
 ```python
 # function.py
@@ -54,4 +56,5 @@ its corresponding header-rewritten url should be:
 https://gitx.io/j/gitx-io/ActionServerless/master/README.md
 ```
 
-just use `gitx.io/j/` to rewrite the `raw.githubusercontent.com/` component.
+just use `gitx.io/j/` to replace the `raw.githubusercontent.com/` segment.
+
