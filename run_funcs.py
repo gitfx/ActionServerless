@@ -14,7 +14,8 @@ SUPPORTED_LANGS = [
         'node',
         'golang',
         'elixir',
-        'haskell']
+        'haskell',
+        'php']
 
 RUN_CMDS = {
         'ruby': 'ruby',
@@ -23,7 +24,8 @@ RUN_CMDS = {
         'perl': 'perl',
         'golang': 'go run',
         'elixir': 'elixir',
-        'haskell': 'runhaskell'}
+        'haskell': 'runhaskell',
+        'php': 'php'}
 
 
 def run_fun(path, func):
