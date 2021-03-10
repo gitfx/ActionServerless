@@ -2,7 +2,7 @@
 
 [![ActionServerless Testing](https://github.com/gitx-io/ActionServerless/workflows/Test%20run%20funcs/badge.svg)](https://github.com/gitx-io/ActionServerless/blob/master/.github/workflows/test_run_funcs.yml)
 
-ActionServerless is an action to do some computing and then generate a string/JSON file to a path, you can visit the file as a service when in dev/testing, or in your production. We may take it as a GitHub Actions powered `serverless` service.
+ActionServerless is an action to do some computing and then generate a string/JSON file to a path, you can visit the file as a service when in dev/testing, or even in your production. We may take it as a GitHub Actions powered `serverless` service.
 
 In fact you can do all of these in native GitHub actions. ActionServerless just wraps the steps to simplify the work:
 
@@ -37,10 +37,11 @@ more languages' examples you can find [here](https://github.com/gitx-io/ActionSe
 | Golang | ⬜️ not supported yet |
 | Haskell | ⬜️ not supported yet |
 | Elixir | ⬜️ not supported yet |
+| PHP | ⬜️ not supported yet |
 
-## HTTP(s) Headers
+## HTTP Headers
 
-If we'd like to be serious to take visiting such a GitHub raw file as a 'service', it's no problem for most situations as you request a normal HTTP(s) service. But GitHub returns a `text/html` for any raw files it serves, that might lead to some bugs though I can't give an example yet.
+If we'd like to be serious to take visiting such a GitHub raw file as a 'service', it's no problem for most situations as you request a normal HTTP service. But GitHub returns a `text/html` for any raw files it serves, that might lead to some bugs though I can't give an example yet.
 
 So we provide a header rewrite service, which returns an `application/json` header for the `json` format files(those generated file suffixed with `.json`), and a `text/plain` header for the rest(those string or any text-based format files).
 
