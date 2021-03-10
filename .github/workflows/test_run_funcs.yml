@@ -9,12 +9,49 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        ref: master
+    - name: Clear result files ahead for test
+      run: rm -rf test/result
     - name: Run funcs
       uses: ./
       with:
         filepath: test/func_samples
+    - name: Check if result files exist
+      run: |
+        cd test/result
+
+        files=(elixir_string
+
+               golang.json
+               golang_string
+
+               haskell.json
+
+               node.json
+               node_string
+
+               perl.json
+
+               php.json
+
+               python.json
+               python_second.json
+               python_string
+
+               ruby.json
+               ruby_second.json
+              )
+
+        status=0
+
+        for f in "${files[@]}"
+        do
+          if [ ! -f $f ]; then
+              echo "File not found: $f"
+              status=1
+          fi
+        done
+
+        exit $status
     - name: Git commit
       run: |
         # git commit if there's any change
