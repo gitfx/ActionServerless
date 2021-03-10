@@ -1,8 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
-// GET /test/result/go_test.json
 func main() {
-	fmt.Println("{\"hello\": \"world\"}")
+	// GET /test/result/golang_string
+	fmt.Println("Hello, Golang!")
+
+	// GET /test/result/golang.json
+	greet := map[string]string{"hello": "golang"}
+	j, _ := json.Marshal(greet)
+	fmt.Println(string(j))
 }
