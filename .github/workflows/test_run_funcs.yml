@@ -39,6 +39,8 @@ jobs:
 
                ruby.json
                ruby_second.json
+
+               test_pre_hook
               )
 
         status=0

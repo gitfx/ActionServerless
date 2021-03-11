@@ -15,7 +15,8 @@ SUPPORTED_LANGS = [
         'golang',
         'elixir',
         'haskell',
-        'php']
+        'php',
+        ]
 
 RUN_CMDS = {
         'ruby': 'ruby',
@@ -25,8 +26,8 @@ RUN_CMDS = {
         'golang': 'go run',
         'elixir': 'elixir',
         'haskell': 'runhaskell',
-        'php': 'php'}
-
+        'php': 'php',
+        }
 
 def run_fun(path, func):
     func_lang = func['language']
@@ -36,16 +37,22 @@ def run_fun(path, func):
     if func_file_name.strip() == '':
         return ""
 
+    pre_hook_file = func_file_name + '.sh'
+    run_pre_hook = '[ -f {0} ] && sh {0} >/dev/null 2>&1'.format(pre_hook_file)
+
     deps_install = {
-        'ruby': '[ -e Gemfile ] && bundle install >/dev/null 2>&1',
-        'python': '[ -e requirements.txt ] && pip install -r requirements.txt >/dev/null 2>&1',
-        'node': '[ -e package.json ] && npm install --only=prod >/dev/null 2>&1',
-        'perl': '[ -e cpanfile ] && cpanm --installdeps . >/dev/null 2>&1'}
+        'ruby': '[ -f Gemfile ] && bundle install >/dev/null 2>&1',
+        'python': '[ -f requirements.txt ] && pip install -r requirements.txt >/dev/null 2>&1',
+        'node': '[ -f package.json ] && npm install --only=prod >/dev/null 2>&1',
+        'perl': '[ -f cpanfile ] && cpanm --installdeps . >/dev/null 2>&1'}
 
     cmd = ['docker', 'run', '--rm', '--workdir', '/github/workspace',
            '-v', os.getenv('GITHUB_WORKSPACE') + ':/github/workspace',
            func_lang + ':latest', 'sh', '-c',
-           "cd " + path + ";" + deps_install.get(func_lang, ':') + ";" + RUN_CMDS[func_lang] + " " + func_file_name]
+           "cd " + path + ";" +
+           run_pre_hook + ";" +
+           deps_install.get(func_lang, ':') + ";" +
+           RUN_CMDS[func_lang] + " " + func_file_name]
 
     output = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0]
     return output.decode("utf8")
