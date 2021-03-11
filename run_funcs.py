@@ -29,6 +29,16 @@ RUN_CMDS = {
         'php': 'php',
         }
 
+DOCKER_IMAGES = {
+        'php': 'composer',
+        }
+
+
+def docker_image(lang):
+    """you can specify a docker image name for a language,
+    otherwise the language name will be returned as the image name"""
+    return DOCKER_IMAGES.get(lang, lang)
+
 def run_fun(path, func):
     func_lang = func['language']
     if func_lang not in SUPPORTED_LANGS:
@@ -37,6 +47,9 @@ def run_fun(path, func):
     if func_file_name.strip() == '':
         return ""
 
+    # pre_hook script is a shell script that start with a same name of
+    # the function file but ends with '.sh',
+    # will be run before the function running
     pre_hook_file = func_file_name + '.sh'
     run_pre_hook = '[ -f {0} ] && sh {0} >/dev/null 2>&1'.format(pre_hook_file)
 
@@ -48,7 +61,7 @@ def run_fun(path, func):
 
     cmd = ['docker', 'run', '--rm', '--workdir', '/github/workspace',
            '-v', os.getenv('GITHUB_WORKSPACE') + ':/github/workspace',
-           func_lang + ':latest', 'sh', '-c',
+           docker_image(func_lang) + ':latest', 'sh', '-c',
            "cd " + path + ";" +
            run_pre_hook + ";" +
            deps_install.get(func_lang, ':') + ";" +
