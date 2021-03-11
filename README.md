@@ -39,28 +39,10 @@ more languages' examples you can find [here](https://github.com/gitx-io/ActionSe
 | Elixir | ⬜️ not supported yet |
 | PHP | ⬜️ not supported yet |
 
-## HTTP Headers
+## Documents
 
-If we'd like to be serious to take visiting such a GitHub raw file as a 'service', it's no problem for most situations as you request a normal HTTP service. But GitHub returns a `text/html` for any raw files it serves, that might lead to some bugs though I can't give an example yet.
-
-So we provide a header rewrite service, which returns an `application/json` header for the `json` format files(those generated file suffixed with `.json`), and a `text/plain` header for the rest(those string or any text-based format files).
-
-### Header rewrite usage
-
-Fox example, here's a raw url of the file:
-
-```
-https://raw.githubusercontent.com/gitx-io/ActionServerless/master/README.md
-```
-
-its corresponding header-rewritten url should be:
-
-```
-https://gitx.io/j/gitx-io/ActionServerless/master/README.md
-```
-
-just use `gitx.io/j/` to replace the `raw.githubusercontent.com/` segment.
-
+* [Pre-hook script](https://github.com/gitx-io/ActionServerless/wiki/Pre-hook-script)
+* [HTTP Headers](https://github.com/gitx-io/ActionServerless/wiki/HTTP-Headers)
 
 ## Contributions
 
