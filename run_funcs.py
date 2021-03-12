@@ -5,7 +5,7 @@ import subprocess
 from parse_funcs import parse
 
 
-ROOT_DIR = os.getenv('GITHUB_WORKSPACE')
+ROOT_DIR = os.getenv('GITHUB_WORKSPACE', os.path.dirname(os.path.abspath(__file__)))
 
 SUPPORTED_LANGS = [
         'ruby',
@@ -39,7 +39,7 @@ def docker_image(lang):
     otherwise the language name will be returned as the image name"""
     return DOCKER_IMAGES.get(lang, lang)
 
-def run_fun(path, func):
+def run_fun(func_path, func):
     func_lang = func['language']
     if func_lang not in SUPPORTED_LANGS:
         return ""
@@ -60,11 +60,11 @@ def run_fun(path, func):
         'perl': '[ -f cpanfile ] && cpanm --installdeps . >/dev/null 2>&1'}
 
     cmd = ['docker', 'run', '--rm', '--workdir', '/github/workspace',
-           '-v', os.getenv('GITHUB_WORKSPACE') + ':/github/workspace',
+           '-v', ROOT_DIR + ':/github/workspace',
            docker_image(func_lang) + ':latest', 'sh', '-c',
-           "cd " + path + ";" +
-           run_pre_hook + ";" +
+           "cd " + os.path.relpath(func_path, ROOT_DIR) + ";" +
            deps_install.get(func_lang, ':') + ";" +
+           run_pre_hook + ";" +
            RUN_CMDS[func_lang] + " " + func_file_name]
 
     output = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0]
@@ -98,11 +98,13 @@ def print_github_raw_url(file_path):
 
 
 if __name__ == "__main__":
-    path = ROOT_DIR
+    # func_path is a path where the functions locate
+    func_path = ROOT_DIR
     if len(sys.argv) > 1:
-        path = sys.argv[1]
+        func_path = sys.argv[1]
+    func_path = os.path.abspath(func_path)
 
-    funcs = parse(path)
+    funcs = parse(func_path)
 
     for func in funcs:
         routes = func['routes']
@@ -111,13 +113,13 @@ if __name__ == "__main__":
         if len(routes) == 1:
             if routes[0]['action'] != 'GET':
                 continue
-            result = run_fun(path, func)
+            result = run_fun(func_path, func)
             print(result)
             if result.strip() == '':
                 continue
             write_to_route(result, routes[0]['route'])
         else:
-            results = run_fun(path, func)
+            results = run_fun(func_path, func)
             if results.strip() == '':
                 continue
             print(results)
