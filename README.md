@@ -28,17 +28,17 @@ more languages' examples you can find [here](https://github.com/gitx-io/ActionSe
 
 ## Languages supported
 
-| Language  | Dependency Installation |
-| ------------- | ------------- |
-| Python | ✅ `requirements.txt` |
-| Ruby | ✅ `Gemfile` |
-| Node.js | ✅ `package.json` |
-| Perl | ✅ `cpanfile` |
-| Golang | ⬜️ not supported yet |
-| Haskell | ⬜️ not supported yet |
-| Elixir | ⬜️ not supported yet |
-| PHP | ⬜️ not supported yet |
-| Bash |  - |
+| Language      | Dependency Installation | Example code                                                                               |
+| ------------- | -------------         | :------------:                                                                               |
+| Python        | ✅ `requirements.txt`   | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.py)      |
+| Ruby          | ✅ `Gemfile`            | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.rb)      |
+| Node.js       | ✅ `package.json`       | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.js)      |
+| Perl          | ✅ `cpanfile`           | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.pl)      |
+| Golang        | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.go)      |
+| Haskell       | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.hs)      |
+| Elixir        | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.exs)     |
+| PHP           | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.php)     |
+| Bash          | -                       | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.sh) |
 
 ## Documents
 
