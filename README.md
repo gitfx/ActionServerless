@@ -38,6 +38,7 @@ more languages' examples you can find [here](https://github.com/gitx-io/ActionSe
 | Haskell | ⬜️ not supported yet |
 | Elixir | ⬜️ not supported yet |
 | PHP | ⬜️ not supported yet |
+| Bash |  - |
 
 ## Documents
 

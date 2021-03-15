@@ -16,6 +16,7 @@ SUPPORTED_LANGS = [
         'elixir',
         'haskell',
         'php',
+        'bash',
         ]
 
 RUN_CMDS = {
@@ -59,13 +60,16 @@ def run_fun(func_path, func):
         'node': '[ -f package.json ] && npm install --only=prod >/dev/null 2>&1',
         'perl': '[ -f cpanfile ] && cpanm --installdeps . >/dev/null 2>&1'}
 
-    cmd = ['docker', 'run', '--rm', '--workdir', '/github/workspace',
-           '-v', ROOT_DIR + ':/github/workspace',
-           docker_image(func_lang) + ':latest', 'sh', '-c',
-           "cd " + os.path.relpath(func_path, ROOT_DIR) + ";" +
-           deps_install.get(func_lang, ':') + ";" +
-           run_pre_hook + ";" +
-           RUN_CMDS[func_lang] + " " + func_file_name]
+    if func_lang == 'bash':
+        cmd = ["bash", os.path.join(func_path, func_file_name)]
+    else:
+        cmd = ['docker', 'run', '--rm', '--workdir', '/github/workspace',
+               '-v', ROOT_DIR + ':/github/workspace',
+               docker_image(func_lang) + ':latest', 'sh', '-c',
+               "cd " + os.path.relpath(func_path, ROOT_DIR) + ";" +
+               deps_install.get(func_lang, ':') + ";" +
+               run_pre_hook + ";" +
+               RUN_CMDS[func_lang] + " " + func_file_name]
 
     output = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0]
     return output.decode("utf8")

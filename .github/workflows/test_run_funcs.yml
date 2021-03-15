@@ -41,6 +41,9 @@ jobs:
                ruby_second.json
 
                test_pre_hook
+
+               bash_string
+               bash.json
               )
 
         status=0

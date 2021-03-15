@@ -14,6 +14,7 @@ EXT_LANG = {
         '.hs': 'haskell',
         '.exs': 'elixir',
         '.php': 'php',
+        '.sh': 'bash',
         }
 
 COMMENT_PREFIX = {
@@ -24,7 +25,8 @@ COMMENT_PREFIX = {
         'node': '//',
         'haskell': '--',
         'elixir': '#',
-        'php': '//'
+        'php': '//',
+        'bash': '#',
         }
 
 
@@ -61,7 +63,8 @@ def parse(path):
             glob('*.pl') + \
             glob('*.hs') + \
             glob('*.exs') + \
-            glob('*.php')
+            glob('*.php') + \
+            glob('*.sh')
 
     for f in files:
         ext_name = os.path.splitext(f)[1]
