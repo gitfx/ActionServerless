@@ -45,6 +45,10 @@ more languages' examples you can find [here](https://github.com/gitx-io/ActionSe
 * [Pre-hook script](https://github.com/gitx-io/ActionServerless/wiki/Pre-hook-script)
 * [HTTP Headers](https://github.com/gitx-io/ActionServerless/wiki/HTTP-Headers)
 
+## Real world examples
+
+* [Shell functions to get Docker image versions](https://github.com/gitx-io?q=docker-major-versions&type=public&language=shell&sort=name)
+
 ## Contributions
 
 Contributions are welcome! You may check the following features in case you'd like to contribute but no idea what to do:
