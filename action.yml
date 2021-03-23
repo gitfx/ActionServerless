@@ -8,7 +8,9 @@ runs:
   using: "composite"
   steps:
     - id: run-funcs
-      run: python3 ${{ github.action_path }}/run_funcs.py ${{ inputs.filepath }}
+      run: |
+        python3 -m pip install gitfx
+        python3 -m gitfx ${{ inputs.filepath }}
       shell: bash
 branding:
   icon: 'cloud-lightning'

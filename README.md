@@ -2,7 +2,7 @@
 
 [![ActionServerless Testing](https://github.com/gitx-io/ActionServerless/workflows/Test%20run%20funcs/badge.svg)](https://github.com/gitx-io/ActionServerless/blob/master/.github/workflows/test_run_funcs.yml)
 
-ActionServerless is an action to do some computing and then generate a string/JSON file to a path, you can visit the file as a service when in dev/testing, or even in your production. We may take it as a GitHub Actions powered `serverless` service.
+ActionServerless is an action using [GitFx](https://github.com/gitx-io/GitFx) to do some computing and then generate a string/JSON file to a path, you can visit the file as a service when in dev/testing, or even in your production. We may take it as a GitHub Actions powered `serverless` service.
 
 In fact you can do all of these in native GitHub actions. ActionServerless just wraps the steps to simplify the work:
 
@@ -24,26 +24,17 @@ print(json.dumps({"hello": "world"}))
 
 put the file to a path(default is the root path of a repo, otherwise you need add the path as an argument to your actions configuaration),  when you push the code the action will be triggered. Then the program's output is written to a file located in `api/py_hello.json` that you defined as a route in the comment.
 
-more languages' examples you can find [here](https://github.com/gitx-io/ActionServerless/tree/master/test/func_samples).
+more languages' examples you can find [here](https://github.com/gitx-io/GitFx/tree/master/test/func_examples).
 
 ## Languages supported
 
-| Language      | Dependency Installation | Example code                                                                               |
-| ------------- | -------------         | :------------:                                                                               |
-| Python        | ✅ `requirements.txt`   | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.py)      |
-| Ruby          | ✅ `Gemfile`            | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.rb)      |
-| Node.js       | ✅ `package.json`       | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.js)      |
-| Perl          | ✅ `cpanfile`           | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.pl)      |
-| Golang        | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.go)      |
-| Haskell       | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.hs)      |
-| Elixir        | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.exs)     |
-| PHP           | ⬜️ not supported yet    | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.php)     |
-| Bash          | -                       | [See](https://github.com/gitx-io/ActionServerless/blob/master/test/func_samples/function.sh) |
+See: https://github.com/gitx-io/GitFx#languages-supported
+
 
 ## Documents
 
-* [Pre-hook script](https://github.com/gitx-io/ActionServerless/wiki/Pre-hook-script)
-* [HTTP Headers](https://github.com/gitx-io/ActionServerless/wiki/HTTP-Headers)
+* [before_script](https://github.com/gitx-io/GitFx/wiki/before_script)
+* [HTTP Headers](https://github.com/gitx-io/GitFx/wiki/HTTP-Headers)
 
 ## Real world examples
 
