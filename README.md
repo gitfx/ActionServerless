@@ -33,12 +33,11 @@ See: https://github.com/gitx-io/GitFx#languages-supported
 
 ## Documents
 
-* [before_script](https://github.com/gitx-io/GitFx/wiki/before_script)
-* [HTTP Headers](https://github.com/gitx-io/GitFx/wiki/HTTP-Headers)
+See: https://github.com/gitx-io/GitFx#documents
 
 ## Real world examples
 
-* [Shell functions to get Docker image versions](https://github.com/gitx-io?q=docker-major-versions&type=public&language=shell&sort=name)
+See: https://github.com/gitx-io/GitFx#real-world-examples
 
 ## Contributions
 
