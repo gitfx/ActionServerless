@@ -4,11 +4,16 @@ inputs:
   filepath:  # id of input
     description: 'A file path where to read source code'
     required: false
+  write_mode:
+    description: 'Output write mode(overwrite/append)'
+    required: false
+    default: 'overwrite'
 runs:
   using: "composite"
   steps:
     - id: run-funcs
       run: |
+        export GITFX_WRITE_MODE=${{ inputs.write_mode }}
         python3 -m pip install gitfx
         python3 -m gitfx ${{ inputs.filepath }}
       shell: bash
