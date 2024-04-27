@@ -2,6 +2,9 @@ name: Test run funcs
 
 on: [push]
 
+permissions:
+  contents: write
+
 jobs:
   test_ruby_func:
     runs-on: ubuntu-latest
